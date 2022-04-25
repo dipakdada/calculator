@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Calculator </title>
+    <link rel="stylesheet" href="cal.css">
+</head>
+
+<body>
+    <div class="container">
+        <input id="T1" type="text">
+        <div class="buttons">
+            <input type="button" value="AC" onclick="clearScreen()">
+            <input type="button" value="DEL" onclick="clearone()">
+            <input type="button" value="%" onclick="print('%')">
+            <input type="button" value="/" onclick="print('/')">
+        </div>
+        <div class="buttons">
+            <input type="button" value="7" onclick="print('7')">
+            <input type="button" value="8" onclick="print('8')">
+            <input type="button" value="9" onclick="print('9')">
+            <input type="button" value="*" onclick="print('*')">
+        </div>
+        <div class="buttons">
+            <input type="button" value="4" onclick="print('4')">
+            <input type="button" value="5" onclick="print('5')">
+            <input type="button" value="6" onclick="print('6')">
+            <input type="button" value="-" onclick="print('-')">
+
+        </div>
+        <div class="buttons">
+            <input type="button" value="1" onclick="print('1')">
+            <input type="button" value="2" onclick="print('2')">
+            <input type="button" value="3" onclick="print('3')">
+            <input type="button" value="+" onclick="print('+')">
+        </div>
+        <div class="buttons">
+            <input type="button" value="0" onclick="print('0')">
+            <input type="button" value="00" onclick="print('00')">
+            <input type="button" value="." onclick="print('.')">
+            <input type="button" value="=" onclick="calculate()">
+        </div>
+    </div>
+    <script>
+        var answer = document.getElementById("T1");
+
+        function print(value) {
+            answer.value += value;
+        }
+
+        function clearScreen() {
+            answer.value = "";
+        }
+
+        function clearone() {
+            answer.value = answer.value.slice(0, answer.value.length - 1);
+        }
+
+        function calculate() {
+            if (answer.value == "") {
+                alert("Please Enter Input!")
+            } else if (!answer.value.match("^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$")) {
+                alert("Invalid String ")
+            } else {
+                var ele = answer.value;
+                var equal = eval(ele);
+                answer.value = equal;
+            }
+        }
+        answer.focus()
+    </script>
+</body>
+
+</html>
